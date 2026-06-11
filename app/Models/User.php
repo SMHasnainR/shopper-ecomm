@@ -7,11 +7,13 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Shopper\Models\Contracts\ShopperUser;
+use Shopper\Traits\InteractsWithShopper;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ShopperUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, InteractsWithShopper;
 
     /**
      * The attributes that are mass assignable.
